@@ -15,9 +15,10 @@ import Loader from '../components/Loader.js';
 import Rating from '../components/Rating';
 
 import { listProductDetails } from '../actions/productActions';
+import { addToCart } from '../actions/cartActions';
 
 const ProductScreen = ({ history, match }) => {
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
 
   const dispatch = useDispatch();
 
@@ -35,6 +36,11 @@ const ProductScreen = ({ history, match }) => {
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
   };
+
+  // const addToCartHandler = () => {
+  //   dispatch(addToCart(product._id, qty));
+  //   history.push('/cart');
+  // };
 
   if (loading) {
     return (
